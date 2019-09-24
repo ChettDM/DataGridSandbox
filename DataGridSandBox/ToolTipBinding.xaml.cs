@@ -20,11 +20,11 @@ namespace DataGridSandBox
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ToolTipBinding : Window
     {
         public ObservableCollection<Element> List { get; set; }
 
-        public MainWindow()
+        public ToolTipBinding()
         {
             List = new ObservableCollection<Element>();
             
@@ -38,20 +38,19 @@ namespace DataGridSandBox
                 {
                     Id = i,
                     IdHasError = true,
-                    IdErrorMessage = "Error: This is an example Id Error Message - " + i,
+                    IdErrorMessage = "This is an example Id Error Message - " + i,
                     Order = i,
                     OrderHasError = true,
-                    OrderErrorMessage = "Error: This is an example OrderErrorMessage Error Message - " + i,
+                    OrderErrorMessage = "This is an example OrderErrorMessage Error Message - " + i,
                     Description1 = nameof(Element.Description1) + " - " + i,
                     Description1HasError = true,
-                    Description1ErrorMessage = "Error: This is an example Description1 Error Message - " + i,
+                    Description1ErrorMessage = "This is an example Description1 Error Message - " + i,
                     Description2 = nameof(Element.Description2) + " - " + i,
                     Description2HasError = true,
-                    Description2ErrorMessage = "Error: This is an example Description2 Error Message - " + i,
+                    Description2ErrorMessage = "This is an example Description2 Error Message - " + i,
 
-                    ElementErrorMessage = "Error: This is an example of a row error."
+                    ElementErrorMessage = "This is an example of a row error."
                 });
-
         }
     }
 }

@@ -1,0 +1,142 @@
+﻿<Window x:Class="DataGridSandBox.ToolTipBinding"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataGridSandBox"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        Loaded="MainWindow_OnLoaded">
+    <Grid>
+        <DataGrid DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}" ItemsSource="{Binding List}" 
+                  AutoGenerateColumns="False">
+            <DataGrid.Resources>
+                <SolidColorBrush x:Key="ErrorColor" Color="Red" />
+                <Style TargetType="Label">
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="FontSize" Value="15" />
+                    <Setter Property="HorizontalContentAlignment" Value="Left"></Setter>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IdHasError}" Value="true">
+                                    <Setter Property="Background" Value="{StaticResource ErrorColor}"/>
+                                    <Setter Property="BorderBrush" Value="{StaticResource ErrorColor}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                            <Setter Property="ToolTip">
+                                <Setter.Value>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Label Grid.Row="0" FontWeight="Bold">Error:</Label>
+                                        <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="{Binding IdErrorMessage}"/>
+                                    </Grid>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="ToolTipService.InitialShowDelay" Value="0"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Order" Binding="{Binding Order}">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IdHasError}" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource ErrorColor}" />
+                                    <Setter Property="BorderBrush" Value="{StaticResource ErrorColor}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                            <Setter Property="ToolTip">
+                                <Setter.Value>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Label Grid.Row="0" FontWeight="Bold">Error:</Label>
+                                        <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="{Binding OrderErrorMessage}"/>
+                                    </Grid>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="ToolTipService.InitialShowDelay" Value="0"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Description1" Binding="{Binding Description1}">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IdHasError}" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource ErrorColor}" />
+                                    <Setter Property="BorderBrush" Value="{StaticResource ErrorColor}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                            <Setter Property="ToolTip">
+                                <Setter.Value>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Label Grid.Row="0" FontWeight="Bold">Error:</Label>
+                                        <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="{Binding Description1ErrorMessage}"/>
+                                    </Grid>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="ToolTipService.InitialShowDelay" Value="0"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Description2" Binding="{Binding Description2}" Width="*">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IdHasError}" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource ErrorColor}" />
+                                    <Setter Property="BorderBrush" Value="{StaticResource ErrorColor}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                            <Setter Property="ToolTip">
+                                <Setter.Value>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Label Grid.Row="0" FontWeight="Bold">Error:</Label>
+                                        <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="{Binding Description2ErrorMessage}"/>
+                                    </Grid>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="ToolTipService.InitialShowDelay" Value="0"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="ToolTip">
+                        <Setter.Value>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" FontWeight="Bold">Error:</Label>
+                                <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="{Binding ElementErrorMessage}"/>
+                            </Grid>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="ToolTipService.InitialShowDelay" Value="0"/>
+                </Style>
+            </DataGrid.RowStyle>
+        </DataGrid>
+    </Grid>
+</Window>
